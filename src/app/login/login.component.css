@@ -1,0 +1,32 @@
+.main-wrapper {
+  margin: auto;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.alerte {
+  margin: auto;
+  width: 35%;
+}
+
+.container {
+  padding-top: 13em;
+}
+
+.button-wrapper {
+  width: 100%;
+  text-align: center;
+}
+#btn-submit {
+  border-radius: 2em;
+  width: 50%;
+}
+.logo-ooredoo {
+  height: 3em;
+  width: 15em;
+}
+.logo-wrapper {
+  text-align: center;
+  position: relative;
+  bottom: 2.5em;
+}

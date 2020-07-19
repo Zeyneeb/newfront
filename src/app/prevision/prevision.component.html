@@ -1,0 +1,85 @@
+<div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <p class="body">
+        Nombre d'incidents : {{number}} incidents.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">
+        OK
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="title-prediction">
+  <h3 >Prévision sur le nombre d'incidents de type STEG ou Clim pouvant se produire durant un mois</h3>
+</div>
+  <div class="main-wrapper">
+    <form [formGroup]="PredictForm" (ngSubmit)="onClickSubmit(PredictForm.value)" >
+      <div class="form-group" >
+        <label for="mois">Mois</label>
+        <input
+        formControlName="mois"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.mois.errors }"
+        ngModel
+        type="text"
+        id="mois"
+        name="mois"
+        placeholder="Entrer le numéro du mois"
+      />
+      <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+        <div *ngIf="f.type.errors.required">
+          Ce champs est requis
+        </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input
+          ngModel
+          formControlName="type"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.type.errors }"
+          type="text"
+          class="form-control"
+          id="type"
+          placeholder="0 : Clim / 1 : STEG"
+          name="type"
+        />
+        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+          <div *ngIf="f.type.errors.required">
+            Ce champs est requis
+          </div>
+        </div>
+      </div>
+
+      <div class="button-wrapper">
+        <button
+          id="btn-envoyer"
+          type="submit"
+          class="btn"
+          style="background-color: #e71c22; color: white;"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        >
+          Envoyer
+        </button>
+      </div>
+      <div>
+      </div>
+    </form>
+  </div>
+</div>

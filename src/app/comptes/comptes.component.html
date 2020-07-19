@@ -1,0 +1,244 @@
+<div class="comptes-wrapper">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modification</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="alerte">
+        <alerte></alerte>
+      </div>
+      <form id="modifForm" [formGroup]="modifForm">
+        <div class="form-group row">
+          <label for="firstname" class="col-sm-4 col-form-label">Prénom:</label>
+          <div class="col-sm-7">
+            <input
+              formControlName="firstname"
+              class="form-control"
+              [(ngModel)]="user.firstname"
+              type="text"
+              id="firstname"
+              name="firstname"
+              #firstname
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lastname" class="col-sm-4 col-form-label">Nom:</label>
+          <div class="col-sm-7">
+            <input
+              formControlName="lastname"
+              class="form-control"
+              [(ngModel)]="user.lastname"
+              type="text"
+              id="lastname"
+              name="lastname"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Username" class="col-sm-4 col-form-label"
+            >Username:</label
+          >
+          <div class="col-sm-7">
+            <input
+              formControlName="username"
+              class="form-control"
+              [(ngModel)]="user.username"
+              type="text"
+              id="username"
+              name="username"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-sm-4 col-form-label">E-mail:</label>
+          <div class="col-sm-7">
+            <input
+              formControlName="email"
+              [(ngModel)]="user.email"
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary btn-modifier"
+        (click)="modifier(modifForm.value)"
+      >
+        Modifier
+      </button>
+      <button
+        id="btn-close"
+        type="button"
+        class="btn btn-danger"
+        (click)="modal.close('Save click')"
+      >
+        Fermer
+      </button>
+    </div>
+  </ng-template>
+
+  <!--///////////////////////////////////////////////////////////////////////////////////////-->
+
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Suppression de {{ username }}
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Êtes-vous sûr(e) de vouloir supprimer définitivement cet utilisateur
+            ?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Non
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            data-dismiss="modal"
+            (click)="deleteUser(username)"
+          >
+            Oui
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--///////////////////////////////////////////////////////////////////////////////////////-->
+
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+    </head>
+    <body>
+      <div class="wrapper">
+        <div class="top">
+          <h3>Tous les utilisateurs:</h3>
+        </div>
+        <div class="middle">
+          <input
+            class="form-control search-input"
+            type="text"
+            name="search"
+            [(ngModel)]="searchText"
+            autocomplete="off"
+            placeholder="Search..."
+          />
+          <button
+            style="
+              height: 2.3em;
+              width: 2.3em;
+              text-align: center;
+              border-radius: 50%;
+              background-color: #2199e8;
+            "
+            class="btn ml-3"
+            routerLink="/ajout"
+          >
+            <img
+              style="position: relative; right: 0.45em; bottom: 0.1em;"
+              class="action-logo"
+              src="../../assets/plus.png"
+              alt="plus-logo"
+            />
+          </button>
+        </div>
+
+        <table class="table row-border hover" id="example">
+          <thead style="background-color: #e71c22; color: white;">
+            <tr>
+              <th style="width: 20%;">Prénom</th>
+              <th style="width: 20%;">Nom</th>
+              <th style="width: 20%;">Username</th>
+              <th style="width: 20%;">E-mail</th>
+              <th style="width: 20%;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="Users">
+            <tr
+              *ngFor="
+                let user of users
+                  | filter: searchText
+                  | paginate: { itemsPerPage: 5, currentPage: p };
+                let i = index
+              "
+            >
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td class="action">
+                <button
+                  class="btn btn-warning mr-1"
+                  (click)="onClickSubmit(user.username); open(content)"
+                >
+                  <img
+                    class="action-logo"
+                    src="../../assets/edit (1).png"
+                    alt="edit logo"
+                  />
+                </button>
+                <button
+                  (click)="getUser(user.username)"
+                  class="btn ml-1"
+                  style="background-color: #e71c22;"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                >
+                  <img
+                    class="action-logo"
+                    src="../../assets/trash.png"
+                    alt="edit logo"
+                  />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination-tab">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </body>
+  </html>
+</div>

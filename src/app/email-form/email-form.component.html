@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="alerte">
+    <alerte></alerte>
+  </div>
+  <div class="main-wrapper">
+    <form [formGroup]="emailForm" (ngSubmit)="onClickSubmit(emailForm.value)">
+      <div class="form-group">
+        <label for="email">Votre E-mail</label>
+        <input
+          ngModel
+          formControlName="email"
+          class="form-control"
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Entrer votre e-mail"
+          name="email"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Votre e-mail est requis</div>
+        </div>
+      </div>
+      <div style="width: 100%; text-align: center;">
+        <button
+          id="btn-submit"
+          type="submit"
+          class="btn"
+          style="background-color: #e71c22; color: white; width: 50%;"
+        >
+          Envoyer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

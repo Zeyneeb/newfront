@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="logo-wrapper">
+    <img
+      class="logo-ooredoo"
+      src="../assets/logo_original.png"
+      alt="logo-ooredoo"
+    />
+  </div>
+  <div class="alerte">
+    <alerte></alerte>
+  </div>
+
+  <div class="main-wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="onClickSubmit(loginForm.value)">
+      <div class="form-group">
+        <label for="Username">Username</label>
+        <input
+          formControlName="username"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+          ngModel
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Entrer votre Username"
+        />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username est requis</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Password">Mot de Passe</label>
+        <input
+          ngModel
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Entrer votre mot de passe"
+          name="password"
+        />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Mot de passe est requis</div>
+        </div>
+      </div>
+
+      <div
+        class="button-wrapper"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <button
+          id="btn-submit"
+          type="submit"
+          class="btn mb-2"
+          style="background-color: #e42028; color: white;"
+        >
+          Se connecter
+        </button>
+        <a routerLink="/email" style="color: black;">Mot de passe oublié?</a>
+      </div>
+    </form>
+  </div>
+</div>

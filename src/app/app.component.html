@@ -1,0 +1,111 @@
+<nav
+  id="navbar"
+  class="navbar"
+  style="background-color: whitesmoke;"
+  *ngIf="currentUser"
+>
+  <a href="/home"
+    ><img
+      class="logo-ooredoo"
+      src="../assets/logo_original.png"
+      alt="logo-ooredoo"
+  /></a>
+  <h3 class="title" *ngIf="!currentUser">Reporting Dashboard</h3>
+  <div *ngIf="currentUser"></div>
+  <div
+    *ngIf="currentUser"
+    class="dropdown"
+    style="background-color: whitesmoke; color: black; padding: 0;"
+  >
+    <button
+      class="btn dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      style="color: black; margin-right: 1.3rem;"
+    >
+      Réglages
+    </button>
+    <div class="dropdown-menu" style="padding: 0;">
+      <ul class="menu" *ngIf="currentUser">
+        <li><a routerLink="/comptes" *ngIf="isAdmin()">Comptes</a></li>
+        <li><a routerLink="/change">Changer mot de passe</a></li>
+        <li><a (click)="logout()" style="cursor: pointer;">Déconnexion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div *ngIf="currentUser" class="sidedrawer">
+  <div class="greeting-message">
+    <div class="top">
+      <img class="user-icon" src="../assets/user.png" alt="user-icon" />
+    </div>
+    <div class="bottom">
+      <span class="current-user" style="color: black;">
+        {{ currentUser.username.split(".").join(" ") }}
+      </span>
+      <div class="online-icon"></div>
+    </div>
+  </div>
+
+  <div class="drawer-links-wrapper" *ngIf="currentUser">
+    <ul class="drawer-links">
+      <li class="link-item">
+        <a routerLink="/home"
+          ><img class="drawer-icon" src="../assets/home.png" alt="" />Accueil</a
+        >
+      </li>
+      <li class="link-item">
+        <a routerLink="/cells"
+          ><img
+            class="drawer-icon"
+            src="../assets/cells.png"
+            alt=""
+          />Technologies par site</a
+        >
+      </li>
+      <li class="link-item">
+        <a routerLink="/incidents"
+          ><img class="drawer-icon" src="../assets/incident.png" alt="" />Suivi
+          des incidents</a
+        >
+      </li>
+      <li class="link-item">
+        <a routerLink="/classification"
+          ><img
+            class="drawer-icon"
+            src="../assets/cluster.png"
+            alt=""
+          />Classification des incidents</a
+        >
+      </li>
+      <li class="link-item">
+        <a routerLink="/technicien"
+          ><img
+            class="drawer-icon"
+            src="../assets/technicien.png"
+            alt=""
+          />Charge des techniciens</a
+        >
+      </li>
+      <li class="link-item">
+        <a routerLink="/task"
+          ><img class="drawer-icon" src="../assets/task.png" alt="" />Task</a
+        >
+      </li>
+      <li class="link-item" id="narlink" *ngIf="isAdmin()">
+        <a routerLink="/nar"
+          ><img class="drawer-icon" src="../assets/nar.png" alt="" />NAR</a
+        >
+      </li>
+      <li class="link-item" id="narlink">
+        <a routerLink="/prevision"
+          ><img class="drawer-icon" src="../assets/ai.png" alt="" />Prévision
+          des incidents</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

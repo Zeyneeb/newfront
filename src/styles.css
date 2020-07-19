@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+.main-wrapper {
+  width: 25%;
+  margin-left: 40%;
+  box-shadow: 0.1em 0.3em 0.5em 0.2em rgba(0, 0, 0, 0.1);
+  padding: 1em;
+}
+.brand {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  color: white;
+  font-size: 1.3em;
+}
+.title {
+  margin-right: 40%;
+  color: black;
+  font-weight: 300;
+}
+.toast-custom {
+  top: 4.2rem;
+  right: 0.5rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.form-control {
+  border-radius: 6em;
+}
+.form-control::placeholder {
+  color: gray;
+}
+label {
+  margin-left: 0.5em;
+}
+.button-wrapper {
+  width: 50%;
+  text-align: center;
+}
+#btn-submit {
+  border-radius: 2em;
+}
+a {
+  text-decoration: none !important;
+  color: white;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+ul {
+  list-style: none;
+}
+.report-wrapper {
+  display: inline;
+  margin-left: 16.3em;
+  text-align: center;
+}

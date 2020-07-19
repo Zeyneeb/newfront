@@ -1,0 +1,23 @@
+.container {
+    margin-top: 6em;
+  }
+
+.button-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+#btn-envoyer {
+    width: 50%;
+    border-radius: 2em;
+}
+
+.body {
+    text-align: center;
+}
+
+.title-prediction {
+    width: 60%;
+    margin-left: 18em;
+    margin-bottom: 3em;
+}

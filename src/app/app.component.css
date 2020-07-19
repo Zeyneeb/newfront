@@ -1,0 +1,103 @@
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: whitesmoke;
+}
+
+li {
+  float: left;
+  font-size: 16px;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: left;
+  text-decoration: none;
+  padding: 0.8em;
+}
+
+.dropdown-menu {
+  min-width: 90px !important;
+}
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sidedrawer {
+  z-index: 0;
+  padding-top: 4em;
+  padding-bottom: 3.2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: whitesmoke;
+  height: 100vh;
+  min-width: 16em;
+}
+.drawer-links {
+  line-height: 2.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+}
+.logo-ooredoo {
+  height: 2.5em;
+  width: 11.3em;
+}
+.link-item a {
+  display: flex;
+  color: black;
+  border-top: white solid 0.1em;
+  width: 100%;
+}
+
+.drawer-links-wrapper {
+  height: 100%;
+}
+#narlink {
+  border-bottom: white solid 0.1em;
+}
+.current-user {
+  color: whitesmoke;
+  text-transform: capitalize;
+  margin-left: 0.5em;
+  font-weight: 500;
+}
+.online-icon {
+  height: 0.5em;
+  width: 0.5em;
+  border-radius: 50%;
+  background-color: #71c846;
+  margin: 0.5em 0.5em 0 0.5em;
+}
+.greeting-message {
+  position: relative;
+  top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bottom {
+  display: flex;
+}
+.drawer-icon {
+  height: 2em;
+  width: 2em;
+  position: relative;
+  top: 0.1em;
+  margin-right: 0.5rem;
+}
+.user-icon {
+  height: 4em;
+  width: 4em;
+  position: relative;
+  top: 0.1em;
+  margin-right: 0.5rem;
+}

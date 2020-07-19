@@ -1,0 +1,125 @@
+<div class="alerte">
+  <alerte></alerte>
+</div>
+<div class="main-wrapper">
+  <h3>Inscription</h3>
+  <hr />
+  <form
+    id="registerForm"
+    [formGroup]="registerForm"
+    (ngSubmit)="onClickSubmit(registerForm.value)"
+  >
+    <div class="form-group">
+      <label for="firstname">Prénom</label>
+      <input
+        formControlName="firstname"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+        ngModel
+        type="text"
+        id="firstname"
+        name="firstname"
+        placeholder="Entrer prénom"
+        required
+      />
+      <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+        <div *ngIf="f.firstname.errors.required">Prénom est requis</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Nom</label>
+      <input
+        formControlName="lastname"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+        ngModel
+        type="text"
+        id="lastname"
+        name="lastname"
+        placeholder="Entrer le nom"
+        required
+      />
+      <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+        <div *ngIf="f.lastname.errors.required">Nom est requis</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Username">Username</label>
+      <input
+        formControlName="username"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+        ngModel
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Entrer le Username"
+        required
+      />
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Username est requis</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Adresse E-mail</label>
+      <input
+        formControlName="email"
+        ngModel
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="nom.prénom@exemple.com"
+        name="email"
+      />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Adresse e-mail est requis</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Password">Mot de Passe</label>
+      <input
+        formControlName="password"
+        ngModel
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+        class="form-control"
+        type="password"
+        id="password"
+        placeholder="Mot de Passe"
+        name="password"
+      />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Mot de passe est requis</div>
+        <div *ngIf="f.password.errors.minlength">
+          Taille minimum: 6 caractères
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cpassword">Confirmation Mot de Passe</label>
+      <input
+        formControlName="cpassword"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }"
+        ngModel
+        type="password"
+        id="cpassword"
+        name="cpassword"
+        placeholder="Confirmer le Mot de Passe"
+        required
+      />
+      <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
+        <div *ngIf="f.cpassword.errors.required">
+          Confirmation du mot de passe est requise
+        </div>
+        <div *ngIf="f.cpassword.errors.mustMatch">
+          Mot de passes non-identiques
+        </div>
+      </div>
+    </div>
+    <div id="btn">
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+  </form>
+</div>
